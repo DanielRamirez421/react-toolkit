@@ -4,12 +4,12 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPokemons, pokemonSliceName } from './store/slices/pokemon';
 
-import { Paginator } from './components/Paginator';
+import { Paginator } from './components/Paginator.jsx';
 
 export const PokemonApp = () => {
 
   const dispatch = useDispatch();
-  const { pokemons, loading } = useSelector(state => state[pokemonSliceName]);
+  const { pokemons, loading, page } = useSelector(state => state[pokemonSliceName]);
   
   useEffect(() => { 
     dispatch( getPokemons() );
@@ -27,8 +27,11 @@ export const PokemonApp = () => {
         { pokemons.map( pokemon => ( <li key={ pokemon.name }>{ pokemon.name }</li> ) ) }
       </ul>
 
-      <Paginator/>
-
+      <Paginator 
+        page={ page } 
+        onNext={ () => dispatch( getPokemons( page ) ) }
+        onPrevious={ () => dispatch( getPokemons( page - 2 ) ) }
+      />
     </>
   )
 }

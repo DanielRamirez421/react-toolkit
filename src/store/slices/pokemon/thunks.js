@@ -3,7 +3,7 @@ import { startLoadingPokemons, setPokemons } from "./pokemonSlice";
 
 // Thunks: Asyncronous action that triggers another action
 
-export const getPokemons = (page = 0) => {
+export const getPokemons = ( page = 0 ) => {
   return async ( dispatch ) => {
     dispatch( startLoadingPokemons() );
     const { data } = await pokemonApi.get(`/pokemon?limit=10&offset=${page * 10}`);

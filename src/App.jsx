@@ -10,7 +10,7 @@ import {
 import { useForm } from "./hooks/useForm";
 
 function App() {
-  const amountField = 'amount';
+  const amountField = "amount";
   const { counter } = useSelector((state) => state.counter);
   const { amount, onInputChange, onResetForm } = useForm({ [amountField]: "" });
 

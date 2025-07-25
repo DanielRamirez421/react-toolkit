@@ -1,11 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-export const todoSliceName = 'todo';
+export const todoSliceName = "todo";
 
 const initialState = {
   counter: 10,
 };
-
 
 export const todoSlice = createSlice({
   name: todoSliceName,
